@@ -7,11 +7,13 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # JWT Auth
     path('api/auth/login/', LoginView.as_view(), name='login'),
     path('api/auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
-    # Apps
     path('api/auth/', include('apps.accounts.urls')),
+    path('api/', include('apps.providers.urls')),
+    path('api/', include('apps.catalog.urls')),
+    path('api/', include('apps.orders.urls')),
+    path('api/', include('apps.notifications.urls')),
+    path('api/', include('apps.organizations.urls')),
+    path('api/admin/', include('apps.admin_panel.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',  
+    'corsheaders',               
+    'channels',                  
+    'django_filters', 
 
     # Local apps
     'apps.accounts',
@@ -128,3 +133,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = [
+    'utils.backends.UsernameBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]

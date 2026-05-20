@@ -1,9 +1,16 @@
 from django.contrib import admin
-from .models import User
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+try:
+    admin.site.unregister(User)
+except admin.sites.NotRegistered:
+    pass
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'first_name', 'last_name', 'role', 'status', 'is_online')
+    list_display = ('email', 'username', 'role', 'status', 'is_online', 'wallet_id')
     list_filter = ('role', 'status', 'is_online')
-    search_fields = ('email', 'first_name', 'last_name', 'username', 'wallet_id')
-    readonly_fields = ('id', 'wallet_id', 'created_at', 'updated_at')
+    search_fields = ('email', 'username', 'wallet_id')
+    ordering = ('email',)
