@@ -4,13 +4,17 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-function parseError(json: any): string {
+function parseError(json: unknown): string {
+  if (!json) return 'Noma\'lum xatolik';
   if (typeof json === 'string') return json;
-  if (json.detail) return json.detail;
-  if (json.non_field_errors) return json.non_field_errors[0];
-  const firstKey = Object.keys(json)[0];
+  const obj = json as Record<string, unknown>;
+  if (obj.detail && typeof obj.detail === 'string') return obj.detail;
+  if (Array.isArray(obj.non_field_errors) && obj.non_field_errors.length > 0) {
+    return String(obj.non_field_errors[0]);
+  }
+  const firstKey = Object.keys(obj)[0];
   if (firstKey) {
-    const val = json[firstKey];
+    const val = obj[firstKey];
     return `${firstKey}: ${Array.isArray(val) ? val[0] : val}`;
   }
   return 'Noma\'lum xatolik';
@@ -87,9 +91,9 @@ export default function LoginPage() {
         </form>
 
         <p className="text-center text-sm text-gray-500 mt-4">
-          Hisobingiz yo'qmi?{' '}
+          Hisobingiz yo&apos;qmi?{' '}
           <Link href="/auth/register" className="text-blue-600 hover:underline">
-            Ro'yxatdan o'tish
+            Ro&apos;yxatdan o&apos;tish
           </Link>
         </p>
       </div>

@@ -4,13 +4,17 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-function parseError(json: any): string {
+function parseError(json: unknown): string {
+  if (!json) return 'Noma\'lum xatolik';
   if (typeof json === 'string') return json;
-  if (json.detail) return json.detail;
-  if (json.non_field_errors) return json.non_field_errors[0];
-  const firstKey = Object.keys(json)[0];
+  const obj = json as Record<string, unknown>;
+  if (obj.detail && typeof obj.detail === 'string') return obj.detail;
+  if (Array.isArray(obj.non_field_errors) && obj.non_field_errors.length > 0) {
+    return String(obj.non_field_errors[0]);
+  }
+  const firstKey = Object.keys(obj)[0];
   if (firstKey) {
-    const val = json[firstKey];
+    const val = obj[firstKey];
     return `${firstKey}: ${Array.isArray(val) ? val[0] : val}`;
   }
   return 'Noma\'lum xatolik';
@@ -40,7 +44,13 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      const { confirmPassword, ...sendData } = formData;
+      const sendData = {
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        username: formData.username,
+        email: formData.email,
+        password: formData.password
+      };
       console.log('Sending request:', sendData);
 
       const res = await fetch('http://localhost:8000/api/auth/register/', {
@@ -70,7 +80,7 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-md p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6">
-          Ro'yxatdan o'tish
+          Ro&apos;yxatdan o&apos;tish
         </h1>
 
         {error && (

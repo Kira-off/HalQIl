@@ -3,9 +3,17 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
+interface UserProfile {
+  first_name: string;
+  email: string;
+  username: string;
+  role: string;
+  wallet_id: string;
+}
+
 export default function HomePage() {
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 

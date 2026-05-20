@@ -1,0 +1,90 @@
+================================================================================
+                    HALQIL UNIVERSAL PROMPT ENGINE & STRICT RULES
+================================================================================
+[Version: 1.0.0]
+[Project Repository: https://github.com/Kira-off/HalQIl]
+[Intent: Universal AI Prompt Engine for High-Performance Engineering]
+
+IMPORTANT: THIS FILE IS THE ABSOLUTE PROTOCOL FOR ALL AI AGENTS DEVELOPING ON THIS
+REPOSITORY. DO NOT VIOLATE THESE RULES. DO NOT BUILD GENERAL SECTIONS OF THE APP
+UNTIL SPECIFIC PHASES AND ROBUST STRUCTURES ARE DEFINED AND VALIDATED.
+
+--------------------------------------------------------------------------------
+1. CORE ARCHITECTURAL PHILOSOPHY (YADRO FALSAFASI)
+--------------------------------------------------------------------------------
+- ZERO REGRESSION: Stability is prioritized over speed. Each line of code must be 
+  clean, modular, and type-safe.
+- NO APP BUILDING YET: Do NOT write mock UI, placeholders, or build arbitrary 
+  views unless explicitly authorized by the user. First, establish the core 
+  engines, state controllers, and schemas using this Prompt Engine.
+- ATOMIC LOGIC INDEPENDENCE: Break all business logic into highly decoupled, 
+  modular modules. Global state must be strictly tracked and easily memoized.
+
+--------------------------------------------------------------------------------
+2. ATOMIC STEP-BY-STEP ALGORITHM (BOSQICHMA-BOSQICH QADAMLAR ALGORITMI)
+--------------------------------------------------------------------------------
+To guarantee flawless execution, every user request must follow this algorithm:
+
+[PHASE SEGMENTATION]
+- Every new request is split into distinct visual Phases (Bosqichlar).
+- Each Phase is parsed into Atomic Steps (Qadamlar) (e.g., Step 1.1, Step 1.2).
+- Each Step must have:
+  a) Explicit Input State.
+  b) Clear execution scope (strictly matching the requested prompt, nothing more).
+  c) Validation checklist (Linter-friendly, compilation-assured).
+
+[ZERO-REGRESSION PIPELINE IN EACH STEP]
+For each Step:
+1. DESIGN THE BLOCK: Formulate a precise, minimal API/type contract in `/src/types.ts`.
+2. CODE IMPLEMENTATION: Write code inside specialized files. Avoid large codeblocks 
+   in single files.
+3. STATIC ANALYSIS & LINTING: Run `lint_applet` to identify type issues, unused
+   variables, or missing imports.
+4. COMPILATION CHECK: Run `compile_applet` to verify that the build succeeds.
+5. DEEP DEBUGGING / BUG FIXING: If any error appears, analyze the root cause 
+   immediately, apply a targeted fix, and re-run compilation.
+6. STABILITY CRITERIA: A step is only considered 100% complete when both compilation
+   and linting are green, and functionality matches expectations. Never proceed 
+   to the next step, nor push, if there is even a single warn/error.
+
+--------------------------------------------------------------------------------
+3. TOKEN OPTIMIZATION & CONTEXT READ-MINIMIZATION PROTOCOL (TOKEN TEJAMKORLIGI)
+--------------------------------------------------------------------------------
+To minimize token billing, maintain rapid attention, and avoid re-reading the
+entire workspace:
+
+- CONTEXT CHECKPOINT FILE: The repository MUST maintain a `/CONTEXT_CHECKPOINT.md` 
+  file in the root path.
+- CHECKPOINT MAINTENANCE: At the end of every active Turn, the AI MUST update 
+  `/CONTEXT_CHECKPOINT.md` with:
+  - Current Phase of development.
+  - Completed files and their current exports/interfaces.
+  - Active issues/known states (Bug list).
+  - Draft of the next technical steps.
+- RESUME PROTOCOL: At the start of any new turn or message, the AI must view 
+  `/CONTEXT_CHECKPOINT.md` first to instantly synchronize its working memory context
+  without reading the full directory tree or source codes.
+
+--------------------------------------------------------------------------------
+4. STRUCTURED METADATA & MICRO-COMMIT TRACKER
+--------------------------------------------------------------------------------
+- Log all modifications, updates, and bugs resolved in each step.
+- Ensure that the commit message format matches the atomic change:
+  Format: "feat(halqil): completed Step X.Y - [brief description]" or "fix(halqil): fixed bug in Step X.Y - [cause]"
+- Update the checkpoint directory for seamless tracking.
+
+--------------------------------------------------------------------------------
+5. PROMPT ENGINE INSTRUCTIONS FOR AI MODELS (AI MODEL YO'RIQNOMALARI)
+--------------------------------------------------------------------------------
+When any AI processes a task on "HalQIl":
+- Always read `/STRICT_RULES.txt` and `/CONTEXT_CHECKPOINT.md` before making edits.
+- Respond with extreme technical precision. No flowery, self-praising words.
+- In your responses, clearly divide your report into:
+  - **Visualizing State**: Where we are in the development roadmap.
+  - **Completed Atomic Step**: What was just completed and verified.
+  - **Bug & Compile Check**: The output of linter/compilation runs.
+  - **Next Actions / Sign-off**: Asking the user for permission or clearly 
+    initiating the next atomic step.
+- If you find any violation of these rules, immediately correct the environment 
+  before proceeding.
+================================================================================

@@ -1,0 +1,66 @@
+export enum Role {
+  USER = 'USER',
+  PROVIDER = 'PROVIDER',
+  SUPER_ADMIN = 'SUPER_ADMIN',
+}
+
+export enum OrderStatus {
+  PENDING = 'PENDING',
+  ACTIVE = 'ACTIVE',
+  DONE = 'DONE',
+  DISPUTED = 'DISPUTED',
+  ACCEPTED = 'ACCEPTED',
+  CHATTING = 'CHATTING',
+  REJECTED = 'REJECTED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  AWAITING_CONFIRMATION = 'AWAITING_CONFIRMATION',
+  COMPLETED = 'COMPLETED',
+  FAILED = 'FAILED',
+  CANCELLED = 'CANCELLED',
+}
+
+export enum UserStatus {
+  ACTIVE = 'ACTIVE',
+  FROZEN = 'FROZEN',
+  BLOCKED = 'BLOCKED',
+  DELETED = 'DELETED',
+}
+
+export enum AvailabilityStatus {
+  AVAILABLE = 'AVAILABLE',
+  BUSY = 'BUSY',
+}
+
+export enum ServiceType {
+  REMOTE = 'REMOTE',
+  ONSITE = 'ONSITE',
+  BOTH = 'BOTH',
+}
+
+export enum NotificationType {
+  ANNOUNCEMENT = 'ANNOUNCEMENT',
+  NEWS = 'NEWS',
+  WARNING = 'WARNING',
+  APPLICATION_RESPONSE = 'APPLICATION_RESPONSE',
+  SYSTEM = 'SYSTEM',
+  DIRECT_MESSAGE = 'DIRECT_MESSAGE',
+  NEW_ORDER = 'NEW_ORDER',
+  CONFIRMATION_REQUEST = 'CONFIRMATION_REQUEST',
+  DISPUTE = 'DISPUTE',
+}
+
+export enum MessageType {
+  TEXT = 'TEXT',
+  IMAGE = 'IMAGE',
+  FILE = 'FILE',
+}
+
+export enum DayOfWeek {
+  MONDAY = 1,
+  TUESDAY = 2,
+  WEDNESDAY = 3,
+  THURSDAY = 4,
+  FRIDAY = 5,
+  SATURDAY = 6,
+  SUNDAY = 7,
+}

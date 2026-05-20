@@ -7,12 +7,14 @@ import { authApi } from '../lib/auth';
 
 export default function Navbar() {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check auth status on mount and when local storage changes
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
     setIsAuthenticated(authApi.isAuthenticated());
-    
+
     // Add event listener to catch login/logout across tabs or components
     const handleStorageChange = () => {
       setIsAuthenticated(authApi.isAuthenticated());
@@ -44,7 +46,14 @@ export default function Navbar() {
           </Link>
           
           <div className="flex space-x-4">
-            {isAuthenticated ? (
+            {!mounted ? (
+              <Link 
+                href="/auth/login" 
+                className="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition"
+              >
+                Kirish
+              </Link>
+            ) : isAuthenticated ? (
               <button 
                 onClick={handleLogout}
                 className="text-gray-600 hover:text-red-600 font-medium px-3 py-2 rounded-md transition"
@@ -63,7 +72,7 @@ export default function Navbar() {
                   href="/auth/register" 
                   className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition"
                 >
-                  Ro'yxatdan o'tish
+                  Ro&apos;yxatdan o&apos;tish
                 </Link>
               </>
             )}
